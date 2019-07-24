@@ -1,13 +1,16 @@
+# import the random library
 import random
 # r_p_s compares the user and the computer values and returns the winner
 def r_p_s(user,computer):
+	# User inputs rock and possible outcomes
 	if user == 'r':
 		if computer == 'rock':
 			return 'tie'
 		if computer == 'paper':
 			return 'lose'
 		if computer == 'scissors':
-			return 'win'	
+			return 'win'
+	# User inputs paper and possible outcomes	
 	elif user == 'p':
 		if computer == 'rock':
 			return 'win'
@@ -15,6 +18,7 @@ def r_p_s(user,computer):
 			return 'tie'
 		if computer == 'scissors':
 			return 'lose'
+	# User inputs scissors and possible outcomes
 	elif user == 's':
 		if computer == 'rock':
 			return 'lose'
@@ -42,18 +46,24 @@ computer_score = 0
 # While loop to continue playing the game
 while game == True: 
 
-	# Computer starts the game
+	# Program starts the game
 	print('Make a move! (r/s/p)')
 
 	# Take user input as the user's move
-	# If the input is not r/s/p, redo move
+	# If the input is not r/s/p/sc, redo move 
 	rsp = False
 	while rsp == False:
 		user_move = input()
 		if user_move == 'r' or user_move == 's' or user_move =='p':
+			# User inputs r/s/p, continue game
 			rsp = True
+		elif user_move == 'sc':
+			# User inputs sc, check score and ask user to make a move
+			print('human: ' + str(user_score) + ', computer: ' + str(computer_score))
+			print('Make a move! (r/s/p)')
+			# Bad input, redo round
 		else: 
-			print('Please enter r/s/p.\nMake a move! (r/s/p)')
+			print('Make a move! (r/s/p)')
 	# Randomize the computer's move
 	possible_computer_moves = ['rock', 'paper', 'scissors']
 	computer_move = random.choice(possible_computer_moves)
